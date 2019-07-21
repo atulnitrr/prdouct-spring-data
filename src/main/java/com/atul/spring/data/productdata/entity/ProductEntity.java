@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 
 /**
@@ -25,8 +26,9 @@ import javax.persistence.Table;
 @Table(name = "product")
 public class ProductEntity {
 
+    @GenericGenerator(name = "product_id", strategy = "com.atul.spring.data.productdata.entity.CustomRandomIdGenerator")
+    @GeneratedValue(generator = "product_id")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;

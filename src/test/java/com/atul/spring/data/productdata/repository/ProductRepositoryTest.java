@@ -1,6 +1,7 @@
 package com.atul.spring.data.productdata.repository;
 
 import static org.junit.Assert.*;
+import java.util.List;
 import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,12 +21,10 @@ public class ProductRepositoryTest {
     @Test
     public void test_crateProduct() {
         final ProductEntity productEntity = new ProductEntity();
-        productEntity.setId(1l);
-        productEntity.setName("samsung2");
-        productEntity.setDesc("good");
-        productEntity.setPrice(9.990);
+        productEntity.setName("tv");
+        productEntity.setDesc("from samsung");
+        productEntity.setPrice(90.90);
         productRepository.save(productEntity);
-        System.out.println("test-->");
     }
 
     @Test
@@ -58,5 +57,13 @@ public class ProductRepositoryTest {
     @Test
     public void test_Count() {
         System.out.println("Count   ->>>>>>>>>>>>>>>>>>>>" + productRepository.count() );
+    }
+
+    @Test
+    public void test_findByName() {
+        List<ProductEntity> productEntities = productRepository.findByName("tv");
+        productEntities.forEach(productEntity -> System.out.println(productEntity.getPrice()));
+        assertNotNull(productEntities);
+        assertEquals(1, productEntities.size());
     }
 }
