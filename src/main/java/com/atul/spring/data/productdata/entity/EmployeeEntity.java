@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import org.hibernate.annotations.GenericGenerator;
 
 
 /**
@@ -24,10 +25,14 @@ import javax.persistence.TableGenerator;
 @Table(name = "employee")
 public class EmployeeEntity {
 
-    @TableGenerator(name = "employee_gen", table = "id_gen", pkColumnName = "gen_name", valueColumnName = "gen_val",
-            allocationSize = 5)
+//    @TableGenerator(name = "employee_gen", table = "id_gen", pkColumnName = "gen_name", valueColumnName = "gen_val",
+//            allocationSize = 5)
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.TABLE, generator = "employee_gen")
+
+    @GenericGenerator(name = "emp_id", strategy = "com.atul.spring.data.productdata.entity.CustomRandomIdGenerator")
+    @GeneratedValue(generator = "emp_id")
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "employee_gen")
     private long id;
     private String name;
 
