@@ -45,8 +45,14 @@ public class ProductRepositoryTest {
         productRepository.save(productEntity);
     }
 
+
+
     @Test
     public void test_delete() {
-        productRepository.deleteById(22l);
+        if (productRepository.existsById(21l)) {
+            System.out.println("Deleting a product");
+            productRepository.deleteById(21l);
+        }
+
     }
 }
