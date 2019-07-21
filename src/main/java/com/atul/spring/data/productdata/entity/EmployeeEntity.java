@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 
 /**
@@ -12,14 +13,21 @@ import javax.persistence.Table;
  * -- id int PRIMARY KEY AUTO_INCREMENT,
  * -- name varchar(20)
  * -- );
+ *
+ * create table id_gen(
+ * gen_name varchar(60) PRIMARY KEY,
+ * gen_val int(20)
+ * );
  */
 
 @Entity
 @Table(name = "employee")
 public class EmployeeEntity {
 
+    @TableGenerator(name = "employee_gen", table = "id_gen", pkColumnName = "gen_name", valueColumnName = "gen_val",
+            allocationSize = 5)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "employee_gen")
     private long id;
     private String name;
 
