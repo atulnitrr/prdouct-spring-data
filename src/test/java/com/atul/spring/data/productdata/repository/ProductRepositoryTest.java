@@ -1,6 +1,7 @@
 package com.atul.spring.data.productdata.repository;
 
 import static org.junit.Assert.*;
+import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,14 @@ public class ProductRepositoryTest {
         productEntity.setPrice(9.990);
         productRepository.save(productEntity);
         System.out.println("test-->");
+    }
+
+    @Test
+    public void test_read() {
+        final Optional<ProductEntity> entity =  productRepository.findById(22l);
+        final ProductEntity productEntity = entity.get();
+        assertNotNull(productEntity);
+        assertEquals("samsung", productEntity.getName());
+        // assert all other value;
     }
 }
