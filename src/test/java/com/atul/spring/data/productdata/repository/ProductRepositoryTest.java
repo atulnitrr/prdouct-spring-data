@@ -21,7 +21,7 @@ public class ProductRepositoryTest {
     public void test_crateProduct() {
         final ProductEntity productEntity = new ProductEntity();
         productEntity.setId(1l);
-        productEntity.setName("samsung");
+        productEntity.setName("samsung2");
         productEntity.setDesc("good");
         productEntity.setPrice(9.990);
         productRepository.save(productEntity);
@@ -53,6 +53,10 @@ public class ProductRepositoryTest {
             System.out.println("Deleting a product");
             productRepository.deleteById(21l);
         }
+    }
 
+    @Test
+    public void test_Count() {
+        System.out.println("Count   ->>>>>>>>>>>>>>>>>>>>" + productRepository.count() );
     }
 }
