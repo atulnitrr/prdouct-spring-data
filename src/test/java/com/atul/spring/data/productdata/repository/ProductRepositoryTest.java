@@ -44,4 +44,9 @@ public class ProductRepositoryTest {
         productEntity.setDesc("testing -->");
         productRepository.save(productEntity);
     }
+
+    @Test
+    public void test_delete() {
+        productRepository.deleteById(22l);
+    }
 }
