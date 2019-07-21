@@ -39,7 +39,7 @@ public class ProductRepositoryTest {
 
     @Test
     public void test_update() {
-        final Optional<ProductEntity> entity =  productRepository.findById(22l);
+        final Optional<ProductEntity> entity =  productRepository.findById(25l);
         final ProductEntity productEntity = entity.get();
         productEntity.setDesc("testing -->");
         productRepository.save(productEntity);
