@@ -36,4 +36,12 @@ public class ProductRepositoryTest {
         assertEquals("samsung", productEntity.getName());
         // assert all other value;
     }
+
+    @Test
+    public void test_update() {
+        final Optional<ProductEntity> entity =  productRepository.findById(22l);
+        final ProductEntity productEntity = entity.get();
+        productEntity.setDesc("testing -->");
+        productRepository.save(productEntity);
+    }
 }
