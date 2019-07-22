@@ -1,13 +1,13 @@
 package com.atul.spring.data.productdata.repository;
 
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import com.atul.spring.data.productdata.entity.ProductEntity;
 
 
 @Repository
-public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
+public interface ProductRepository extends PagingAndSortingRepository<ProductEntity, Long> {
 
     List<ProductEntity> findByName(final String name);
 

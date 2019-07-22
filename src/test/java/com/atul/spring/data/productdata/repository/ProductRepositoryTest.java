@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.atul.spring.data.productdata.entity.ProductEntity;
 
@@ -22,9 +24,9 @@ public class ProductRepositoryTest {
     @Test
     public void test_crateProduct() {
         final ProductEntity productEntity = new ProductEntity();
-        productEntity.setName("tv");
-        productEntity.setDesc("from samsung");
-        productEntity.setPrice(90.90);
+        productEntity.setName("radio ");
+        productEntity.setDesc("from lg");
+        productEntity.setPrice(9.90);
         productRepository.save(productEntity);
     }
 
@@ -123,8 +125,12 @@ public class ProductRepositoryTest {
         //assertEquals(1, productEntities.size());
     }
 
+    @Test
+    public void test_FindALlPaging() {
+        final PageRequest pageRequest = new PageRequest(2, 2);
+          Page<ProductEntity> products =  productRepository.findAll(pageRequest);
+          products.forEach(productEntity -> System.out.println(productEntity.getName()));
 
 
-
-
+    }
 }
