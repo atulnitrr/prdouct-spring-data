@@ -13,6 +13,8 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
 
     List<ProductEntity> findByNameAndDesc(final String name, final String desc);
 
+    List<ProductEntity> findByPriceGreaterThan(final double price);
+
 
 
 }

@@ -77,6 +77,15 @@ public class ProductRepositoryTest {
     }
 
 
+    @Test
+    public void test_findByProice() {
+        List<ProductEntity> productEntities = productRepository.findByPriceGreaterThan(10d);
+        productEntities.forEach(productEntity -> System.out.println(productEntity.getPrice()));
+        assertNotNull(productEntities);
+        //assertEquals(1, productEntities.size());
+    }
+
+
 
 
 }
