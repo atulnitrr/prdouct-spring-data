@@ -78,13 +78,23 @@ public class ProductRepositoryTest {
 
 
     @Test
-    public void test_findByProice() {
+    public void test_findByPrice() {
         List<ProductEntity> productEntities = productRepository.findByPriceGreaterThan(10d);
         productEntities.forEach(productEntity -> System.out.println(productEntity.getPrice()));
         assertNotNull(productEntities);
         //assertEquals(1, productEntities.size());
     }
 
+
+    @Test
+    public void test_findByDescContains() {
+        List<ProductEntity> productEntities = productRepository.findByDescContains("good"
+                + ""
+                + "gs");
+        productEntities.forEach(productEntity -> System.out.println(productEntity.getPrice()));
+        assertNotNull(productEntities);
+        //assertEquals(1, productEntities.size());
+    }
 
 
 
