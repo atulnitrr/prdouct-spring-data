@@ -24,6 +24,6 @@ public interface ProductRepository extends PagingAndSortingRepository<ProductEnt
 
     List<ProductEntity> findByIdIn(List<Long> ids);
 
-    List<ProductEntity> findByIdInPage(List<Long> ids, final Pageable pageable);
+//    List<ProductEntity> findByIdInPage(List<Long> ids, final Pageable pageable);
 
 }
