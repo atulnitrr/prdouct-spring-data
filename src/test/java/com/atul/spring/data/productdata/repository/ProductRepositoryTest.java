@@ -1,6 +1,7 @@
 package com.atul.spring.data.productdata.repository;
 
 import static org.junit.Assert.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import org.junit.Test;
@@ -104,6 +105,24 @@ public class ProductRepositoryTest {
         assertNotNull(productEntities);
         //assertEquals(1, productEntities.size());
     }
+
+
+    @Test
+    public void test_findByDescLIKE() {
+        List<ProductEntity> productEntities = productRepository.findByDescLike("%notgood%");
+        productEntities.forEach(productEntity -> System.out.println(productEntity.getName()));
+        assertNotNull(productEntities);
+        //assertEquals(1, productEntities.size());
+    }
+
+    @Test
+    public void test_findByIDIN() {
+        List<ProductEntity> productEntities = productRepository.findByIdIn(Arrays.asList(142485l, 150218l));
+        productEntities.forEach(productEntity -> System.out.println(productEntity.getName()));
+        assertNotNull(productEntities);
+        //assertEquals(1, productEntities.size());
+    }
+
 
 
 
