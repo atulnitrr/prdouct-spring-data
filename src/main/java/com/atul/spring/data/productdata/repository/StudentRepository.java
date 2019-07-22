@@ -1,6 +1,7 @@
 package com.atul.spring.data.productdata.repository;
 
 import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -13,7 +14,7 @@ import com.atul.spring.data.productdata.entity.StudentEntity;
 public interface StudentRepository extends PagingAndSortingRepository<StudentEntity, Long> {
 
     @Query(value = "select student from StudentEntity student")
-    List<StudentEntity> findAllStudents();
+    List<StudentEntity> findAllStudents(final Pageable pageable);
 
     @Query(value = "select s.firstName , s.lastName from StudentEntity s")
     List<Object[]> findStudentspartial();

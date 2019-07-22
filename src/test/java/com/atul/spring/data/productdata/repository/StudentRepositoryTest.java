@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,7 +32,8 @@ public class StudentRepositoryTest {
 
     @Test
     public void test_GetALlSql() {
-        studentRepository.findAllStudents().forEach(studentEntity ->
+        final PageRequest pageRequest = PageRequest.of(1,2, Sort.Direction.ASC, "lastName");
+        studentRepository.findAllStudents(pageRequest).forEach(studentEntity ->
                 System.out.println(studentEntity));
 
     }
