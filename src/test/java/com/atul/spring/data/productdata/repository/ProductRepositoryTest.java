@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 import com.atul.spring.data.productdata.entity.ProductEntity;
 
@@ -127,10 +129,36 @@ public class ProductRepositoryTest {
 
     @Test
     public void test_FindALlPaging() {
-        final PageRequest pageRequest = new PageRequest(2, 2);
-          Page<ProductEntity> products =  productRepository.findAll(pageRequest);
-          products.forEach(productEntity -> System.out.println(productEntity.getName()));
+        final PageRequest pageRequest =  PageRequest.of(2, 2);
+        Page<ProductEntity> products =  productRepository.findAll(pageRequest);
+        products.forEach(productEntity -> System.out.println(productEntity.getName()));
 
 
+    }
+
+
+    @Test
+    public void test_FindALlSorting() {
+        productRepository.findAll(new Sort(Sort.Direction.DESC, "desc")).forEach(productEntity -> System.out.println(productEntity.getName()));
+    }
+
+
+    @Test
+    public void test_FindALlSortByMultiple() {
+        productRepository.findAll(new Sort(Sort.Direction.DESC, "desc")).forEach(productEntity -> System.out.println(productEntity.getName()));
+    }
+
+
+    @Test
+    public void test_FindALlSortByMultipleOrder() {
+        productRepository.findAll(new Sort(new Sort.Order(Sort.Direction.DESC, "name"), new Sort.Order("price"))).forEach(productEntity -> System.out.println(productEntity.getName()));
+    }
+
+    @Test
+    public void test_FindALlPaginngAndSOrting() {
+        final Pageable pageable = PageRequest.of(0, 2, Sort.Direction.DESC, "name");
+        productRepository.findAll(pageable).forEach(productEntity -> {
+            System.out.println(productEntity.getName() + "  " + productEntity.getDesc());
+        });
     }
 }
