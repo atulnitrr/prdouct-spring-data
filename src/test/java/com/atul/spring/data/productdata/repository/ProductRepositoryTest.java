@@ -66,4 +66,17 @@ public class ProductRepositoryTest {
         assertNotNull(productEntities);
         assertEquals(1, productEntities.size());
     }
+
+
+    @Test
+    public void test_findByNameAndDesc() {
+        List<ProductEntity> productEntities = productRepository.findByNameAndDesc("iphone", "notgood");
+        productEntities.forEach(productEntity -> System.out.println(productEntity.getPrice()));
+        assertNotNull(productEntities);
+        assertEquals(1, productEntities.size());
+    }
+
+
+
+
 }

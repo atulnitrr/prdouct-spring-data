@@ -11,4 +11,8 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
 
     List<ProductEntity> findByName(final String name);
 
+    List<ProductEntity> findByNameAndDesc(final String name, final String desc);
+
+
+
 }
