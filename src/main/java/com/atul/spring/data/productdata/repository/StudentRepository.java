@@ -32,6 +32,15 @@ public interface StudentRepository extends PagingAndSortingRepository<StudentEnt
     void deletStudentsByFirstName(@Param("firstName") final String firstName);
 
 
+//    jpql native Query
+    @Query(value = "select * from student", nativeQuery = true)
+    List<StudentEntity> findAllUsernative();
+
+    @Query(value = "select * from student s where s.fname = :firstName", nativeQuery = true)
+    List<StudentEntity> findAllUsernativeParam(@Param("firstName") final String firstName);
+
+
+
 
 
 

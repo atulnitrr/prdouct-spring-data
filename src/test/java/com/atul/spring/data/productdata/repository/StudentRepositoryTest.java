@@ -68,4 +68,15 @@ public class StudentRepositoryTest {
         studentRepository.deletStudentsByFirstName("ak1");
 
     }
+
+    @Test
+    public void test_findALlNq() {
+        System.out.println(studentRepository.findAllUsernative());
+    }
+
+    @Test
+    public void test_getFyFirstNameNQ() {
+
+        System.out.println(studentRepository.findAllUsernativeParam("ak12"));
+    }
 }
