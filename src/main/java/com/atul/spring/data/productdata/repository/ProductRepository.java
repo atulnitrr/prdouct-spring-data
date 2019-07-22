@@ -17,6 +17,8 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
 
     List<ProductEntity> findByDescContains(final String desc);
 
+    List<ProductEntity> findByPriceBetween(final double price1,final double price2);
+
 
 
 }

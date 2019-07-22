@@ -97,5 +97,15 @@ public class ProductRepositoryTest {
     }
 
 
+    @Test
+    public void test_findByPriceBetween() {
+        List<ProductEntity> productEntities = productRepository.findByPriceBetween(9d, 100d);
+        productEntities.forEach(productEntity -> System.out.println(productEntity.getPrice()));
+        assertNotNull(productEntities);
+        //assertEquals(1, productEntities.size());
+    }
+
+
+
 
 }
