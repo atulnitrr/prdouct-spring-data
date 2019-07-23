@@ -1,6 +1,5 @@
 package com.atul.spring.data.productdata.repository;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +31,5 @@ public class EmployeeAddressRepositoryTest {
         entity.setName("1234");
         addressRepository.save(entity);
     }
+
 }
