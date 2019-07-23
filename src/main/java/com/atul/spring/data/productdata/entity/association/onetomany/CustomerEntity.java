@@ -1,5 +1,6 @@
 package com.atul.spring.data.productdata.entity.association.onetomany;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -48,4 +49,17 @@ public class CustomerEntity {
             final Set<PhoneNumberEntity> numbers) {
         this.numbers = numbers;
     }
+
+
+
+    public void addPhoneNumber(PhoneNumberEntity phoneNumberEntity) {
+        if (phoneNumberEntity != null) {
+            if (numbers == null) {
+                numbers = new HashSet<>();
+            }
+            phoneNumberEntity.setCustomerEntity(this);
+            numbers.add(phoneNumberEntity);
+        }
+    }
+
 }

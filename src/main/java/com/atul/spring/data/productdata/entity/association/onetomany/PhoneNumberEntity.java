@@ -46,4 +46,12 @@ public class PhoneNumberEntity {
     public void setType(final String type) {
         this.type = type;
     }
+
+    public CustomerEntity getCustomerEntity() {
+        return customerEntity;
+    }
+
+    public void setCustomerEntity(final CustomerEntity customerEntity) {
+        this.customerEntity = customerEntity;
+    }
 }
