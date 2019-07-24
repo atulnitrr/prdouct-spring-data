@@ -2,6 +2,8 @@ package com.atul.spring.data.productdata.repository;
 
 import static org.junit.Assert.*;
 import java.util.List;
+import javax.persistence.EntityManager;
+import org.hibernate.Session;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class StudentRepositoryTest {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    //HIbernate session like object
+    @Autowired
+    private EntityManager entityManager;
 
     @Test
     public void test_CreateUser() {
@@ -92,4 +98,14 @@ public class StudentRepositoryTest {
         System.out.println(studentRepository.findById(2l));
         System.out.println(studentRepository.findById(2l));
     }
+
+    @Test
+    @Transactional
+    public void test_Evict() {
+        final Session session = entityManager.unwrap(Session.class);
+        final StudentEntity studentEntity = studentRepository.findById(2l).get();
+        session.evict(studentEntity);
+        studentRepository.findById(2l);
+    }
+
 }
