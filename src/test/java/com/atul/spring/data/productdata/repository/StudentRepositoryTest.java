@@ -79,4 +79,17 @@ public class StudentRepositoryTest {
 
         System.out.println(studentRepository.findAllUsernativeParam("ak12"));
     }
+
+    /**
+     * Caching to work marking it as transactional is imp
+     * , If you remove transactionl then select statement will run three times.
+     * Keepin Transactional works for caching and query runs only one time
+     */
+    @Test
+    @Transactional
+    public void test_Caching() {
+        System.out.println(studentRepository.findById(2l));
+        System.out.println(studentRepository.findById(2l));
+        System.out.println(studentRepository.findById(2l));
+    }
 }
