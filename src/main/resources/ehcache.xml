@@ -1,0 +1,4 @@
+<ehcache>
+    <diskStore path="/Users/akumar63/ow/backend/productdata" />
+    <defaultCache  maxBytesLocalHeap ="1024" eternal ="false" timeToIdleSeconds="5" timeToLiveSeconds="10" overflowToDisk="true"/>
+</ehcache>
