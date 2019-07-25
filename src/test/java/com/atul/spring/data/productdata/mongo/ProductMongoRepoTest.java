@@ -1,6 +1,7 @@
 package com.atul.spring.data.productdata.mongo;
 
 import static org.junit.Assert.*;
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class ProductMongoRepoTest {
     public void test_Create() {
 
         final ProductMongo productMongo = new ProductMongo();
-        productMongo.setName("Apple");
-        productMongo.setPrice(1000.90f);
+        productMongo.setName("mac");
+        productMongo.setPrice(123f);
 
         final ProductMongo savedProduct =  productMongoRepo.save(productMongo);
 
@@ -31,4 +32,21 @@ public class ProductMongoRepoTest {
         System.out.println(savedProduct.getPrice());
     }
 
+    @Test
+    public void test_findALl() {
+
+        List<ProductMongo> productMongos = productMongoRepo.findAll();
+
+        System.out.println(productMongos);
+
+    }
+
+    @Test
+    public void test_delete() {
+
+        productMongoRepo.deleteById("5d39c2977859c65a40256db1");
+
+        System.out.println(productMongoRepo.findAll());
+
+    }
 }

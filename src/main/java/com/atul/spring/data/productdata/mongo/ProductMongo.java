@@ -37,4 +37,12 @@ public class ProductMongo {
     public void setPrice(final float price) {
         this.price = price;
     }
+
+    @Override public String toString() {
+        return "ProductMongo{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
