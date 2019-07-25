@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 import com.atul.spring.data.productdata.entity.BankdAccountEntity;
 
 
-public interface BankAccountRepo extends CrudRepository<BankdAccountEntity, Integer> {
 
+public interface BankAccountRepo extends CrudRepository<BankdAccountEntity, Integer> {
 
 }
